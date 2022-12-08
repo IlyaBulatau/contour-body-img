@@ -5,7 +5,7 @@ mp_drawing = mp.solutions.drawing_utils
 mp_selfie_segmentation = mp.solutions.selfie_segmentation
 
 # For static images:
-IMAGE_FILES = ['images/man.jpg']
+IMAGE_FILES = ['images/women.jpg']
 BG_COLOR = (0, 0, 0)  # black
 MASK_COLOR = (255, 255, 255)  # white
 with mp_selfie_segmentation.SelfieSegmentation(
@@ -32,4 +32,4 @@ with mp_selfie_segmentation.SelfieSegmentation(
 
         cv2.imshow('img', image_copy)
         cv2.waitKey(0)
-        cv2.imwrite('result/imgresult1.jpg', image_copy)
+        cv2.imwrite('result/imgresult4.jpg', image_copy)
