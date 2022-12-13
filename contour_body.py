@@ -5,7 +5,7 @@ mp_drawing = mp.solutions.drawing_utils
 mp_selfie_segmentation = mp.solutions.selfie_segmentation
 
 # For static images:
-IMAGE_FILES = ['images/photo.jpg']
+IMAGE_FILES = ['images/train.jpg']
 BG_COLOR = (0, 0, 0)  # black
 MASK_COLOR = (255, 255, 255)  # white
 with mp_selfie_segmentation.SelfieSegmentation(
@@ -16,7 +16,7 @@ with mp_selfie_segmentation.SelfieSegmentation(
         results = selfie_segmentation.process(
             cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
 
-        condition = np.stack((results.segmentation_mask,) * 3, axis=-1) > 0.85
+        condition = np.stack((results.segmentation_mask,) * 3, axis=-1) > 0.4
         fg_image = np.zeros(image.shape, dtype=np.uint8)
         fg_image[:] = MASK_COLOR
         bg_image = np.zeros(image.shape, dtype=np.uint8)
@@ -32,4 +32,4 @@ with mp_selfie_segmentation.SelfieSegmentation(
 
         cv2.imshow('img', image_copy)
         cv2.waitKey(0)
-        cv2.imwrite('result/imgresult4.jpg', image_copy)
+        # cv2.imwrite('result/imgresult1.jpg', image_copy)
